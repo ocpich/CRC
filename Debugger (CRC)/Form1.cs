@@ -28,16 +28,16 @@ namespace Debugger__CRC_
         // Methode to calculate a data CRC
         {
             int     nbDigits = 0; // To count the number of digits in the given number
-
+            crcVal = 0;
             // to browse the data
             for (int i = 0; i < data.Length; i++)
             {
                 char c = data[i];
-                if ((c > '0') && (c < '9')) // it's a digit
+                if ((c >= '0') && (c <= '9')) // it's a digit
                 {
                     nbDigits++;
                     crcVal = crcVal + ((int)c - (int)'0');
-                    if (crcVal > 100) // We cannot go over 100 because we only have 2 digits in the CRC
+                    if (crcVal >= 100) // We cannot go over 100 because we only have 2 digits in the CRC
                         crcVal = crcVal - 100;
                 }
             }
